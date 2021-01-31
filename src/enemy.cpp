@@ -20,14 +20,14 @@ namespace Enemies {
         this->type = type.name;
         this->prefix = modifier.name;
         this->description = type.description + " This one is " + modifier.description;
-        this->maxHealth = type.maxHealth * modifier.healthFactor;
-        this->attack = type.attack * modifier.attackFactor;
+        this->maxHealth = round(type.maxHealth * modifier.healthFactor);
+        this->attack = round(type.attack * modifier.attackFactor);
         this->health = this->maxHealth;
     }
 
     std::string Enemy::info() {
         return
-           prefix + " " + type + " " + description + "\n" +
-           std::to_string(health) + "/" + std::to_string(maxHealth) + " " + std::to_string(attack);
+           prefix + " " + type + "; " + description + "\n" +
+           "HP: " + std::to_string(health) + "/" + std::to_string(maxHealth) + " ATK:" + std::to_string(attack);
     }
 }

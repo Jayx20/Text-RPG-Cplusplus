@@ -2,6 +2,11 @@
 #include "enemy.h"
 
 namespace Enemies {
+    //TODO: make modifiers depend on the player level, or area or something. May need to add a new field to Modifier for this.
+    /**
+     * @brief Where all of the possible modifiers are stored. Can change.
+     * 
+     */
     std::vector<Modifier> modifierMap = {
         //name, description, healthFactor, attackFactor
         {"Tiny","tiny and vulnerable.", .5, .5},

@@ -2,6 +2,10 @@
 #include "enemy.h"
 
 namespace Enemies {
+    /**
+     * @brief Where all of the possible enemies are stored. Can change.
+     * 
+     */
     std::vector<Type> typeMap = {
         // name, description, maxHP, ATK
         {"Chungus", "A balanced enemy that looks like bugs bunny.", 120, 25},
