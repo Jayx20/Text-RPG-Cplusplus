@@ -37,11 +37,17 @@ BattleResult battle(Player& player, Enemy& enemy) {
                 //TODO: fail to flee
                 flee = true;
                 validInput = true;
+                //newline needs to be eated or it will skip the next user input and put the newline in
+                while ((getchar()) != '\n');
             }
-            else if (playerInput = '\n')
+            else if (playerInput == '\n')
                 validInput = true;
-            else
+            else {
                 printf("Please press enter (fight) or input 'r' to run.\n");
+                //newline needs to be eated or it will skip the next user input and put the newline in
+                while ((getchar()) != '\n');
+            }
+            
         } while (!validInput);
 
         if (flee) {

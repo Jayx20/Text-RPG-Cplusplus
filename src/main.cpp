@@ -9,6 +9,7 @@
 typedef Enemies::Enemy Enemy;
 
 void wait() {
+    std::cin.clear();
     printf("...");
     std::cin.get();
 }
