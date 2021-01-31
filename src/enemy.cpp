@@ -1,20 +1,33 @@
 #include "enemy.h"
+#include <random>
+#include <chrono>
+
 
 namespace Enemies {
+
     Enemy::Enemy() {
-        //temp
-        Type type = typeMap[0];
+        std::default_random_engine rand;
+        //get a seed from system time
+        rand.seed(std::chrono::system_clock::now().time_since_epoch().count());
+        //set up random number generators
+        std::uniform_int_distribution<int> randType(0,typeMap.size()-1);
+        std::uniform_int_distribution<int> randMod(0,modifierMap.size()-1);
+        
+        //get random type and modifier
+        Type type = typeMap[randType(rand)];
+        Modifier modifier = modifierMap[randMod(rand)];
+
         this->type = type.name;
-        this->prefix = "TESTING";
-        this->description = type.description;
-        this->maxHP = type.maxHP;
-        this->HP = type.maxHP;
-        this->ATK = type.ATK;
+        this->prefix = modifier.name;
+        this->description = type.description + " This one is " + modifier.description;
+        this->maxHealth = type.maxHealth * modifier.healthFactor;
+        this->attack = type.attack * modifier.attackFactor;
+        this->health = this->maxHealth;
     }
 
     std::string Enemy::info() {
         return
            prefix + " " + type + " " + description + "\n" +
-           std::to_string(HP) + "/" + std::to_string(maxHP) + " " + std::to_string(ATK);
+           std::to_string(health) + "/" + std::to_string(maxHealth) + " " + std::to_string(attack);
     }
 }

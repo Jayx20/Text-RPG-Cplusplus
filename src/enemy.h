@@ -6,14 +6,14 @@ namespace Enemies {
     struct Type {
         std::string name;
         std::string description;
-        int maxHP;
-        int ATK;
+        int maxHealth;
+        int attack;
     };
     struct Modifier {
         std::string name;
         std::string description;
-        int HP;
-        int ATK;
+        float healthFactor;
+        float attackFactor;
     };
 
     class Enemy {
@@ -21,9 +21,9 @@ namespace Enemies {
             std::string type;
             std::string prefix;
             std::string description;
-            int maxHP;
-            int HP;
-            int ATK;
+            int maxHealth;
+            int health;
+            int attack;
         public:
             /**
              * @brief Construct a random Enemy by getting a random type and prefix.
@@ -38,5 +38,5 @@ namespace Enemies {
     };
 
     extern std::vector<Type> typeMap;
-    extern std::vector<Modifier> prefixMap;
+    extern std::vector<Modifier> modifierMap;
 }

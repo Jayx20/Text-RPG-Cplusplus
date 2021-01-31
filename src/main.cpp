@@ -7,11 +7,15 @@
 int main() {
     typedef Enemies::Enemy Enemy;
 
-    Enemy e;
+    printf("Welcome to good game best game.\n");
 
-    printf(e.info().c_str());
+    while (true) {
+        Enemy e;
 
-    std::cin.get();
+        printf((e.info()+"\n").c_str());
+
+        std::cin.get(); 
+    }
 
     return 0;
 }
